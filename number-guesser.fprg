@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="owner"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-01-15 08:27:17 PM"/>
+        <attribute name="created" value="b3duZXI7Q1JBU0hDQVJUOzIwMjAtMDEtMTU7MDY6Mjc6MzkgUE07MjUwNA=="/>
+        <attribute name="edited" value="b3duZXI7Q1JBU0hDQVJUOzIwMjAtMDEtMTU7MDg6Mjc6MTcgUE07NTsyNjE0"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="playAgain" type="Boolean" array="False" size=""/>
+            <do expression="playAgain">
+                <output expression="&quot;Pick a number from 1-100 and I'll can guess it.  Ready? (y/[n])&quot;" newline="True"/>
+                <declare name="inputReady" type="String" array="False" size=""/>
+                <input variable="inputReady"/>
+                <if expression="(inputReady == &quot;y&quot;) or (inputReady == &quot;Y&quot;) or (inputReady == &quot;yes&quot;) or (inputReady == &quot;Yes&quot;)">
+                    <then>
+                        <declare name="correct" type="Boolean" array="False" size=""/>
+                        <declare name="i" type="Integer" array="False" size=""/>
+                        <assign variable="i" expression="0"/>
+                        <do expression="!correct">
+                            <assign variable="i" expression="i + 1"/>
+                            <output expression="&quot;Is your number &quot; &amp; i &amp; &quot;? (y/[n])&quot;" newline="True"/>
+                            <declare name="inputAsk" type="String" array="False" size=""/>
+                            <input variable="inputAsk"/>
+                            <if expression="(inputAsk == &quot;y&quot;) or (inputAsk == &quot;Y&quot;) or (inputAsk == &quot;yes&quot;) or (inputAsk == &quot;Yes&quot;)">
+                                <then>
+                                    <assign variable="correct" expression="true"/>
+                                </then>
+                                <else>
+                                    <assign variable="correct" expression="false"/>
+                                </else>
+                            </if>
+                        </do>
+                        <output expression="&quot;I knew it was &quot; &amp; i &amp; &quot; all along!  Can we play again? (y/[n])&quot;" newline="True"/>
+                        <declare name="inputPlayAgain" type="String" array="False" size=""/>
+                        <input variable="inputPlayAgain"/>
+                        <if expression="(inputPlayAgain == &quot;y&quot;) or (inputPlayAgain == &quot;Y&quot;) or (inputPlayAgain == &quot;yes&quot;) or (inputPlayAgain == &quot;Yes&quot;)">
+                            <then>
+                                <assign variable="playAgain" expression="true"/>
+                                <output expression="&quot;Woohoo!  Okay.  &quot;" newline="False"/>
+                            </then>
+                            <else>
+                                <assign variable="playAgain" expression="false"/>
+                                <output expression="&quot;Booooo.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <output expression="&quot;Rude.&quot;" newline="True"/>
+                        <assign variable="playAgain" expression="false"/>
+                    </else>
+                </if>
+            </do>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="owner"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2020-01-16 12:44:10 AM"/>
+        <attribute name="created" value="b3duZXI7Q1JBU0hDQVJUOzIwMjAtMDEtMTY7MTI6MjQ6MTQgQU07MjQ3Nw=="/>
+        <attribute name="edited" value="b3duZXI7Q1JBU0hDQVJUOzIwMjAtMDEtMTY7MTI6NDQ6MTAgQU07MTsyNTgz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <output expression="&quot;Pick a number from 1-100 and I'll try to guess it.  Press [Enter] when you're ready.&quot;" newline="True"/>
+            <declare name="startString" type="String" array="False" size=""/>
+            <input variable="startString"/>
+            <declare name="correct" type="Boolean" array="False" size=""/>
+            <declare name="guessNumber" type="Integer" array="False" size=""/>
+            <assign variable="guessNumber" expression="50"/>
+            <declare name="guessMin" type="Integer" array="False" size=""/>
+            <assign variable="guessMin" expression="1"/>
+            <declare name="guessMax" type="Integer" array="False" size=""/>
+            <assign variable="guessMax" expression="100"/>
+            <do expression="!correct">
+                <output expression="&quot;My guess is &quot; &amp; guessNumber &amp; &quot;.  Please say 'yes', 'higher', or 'lower'.&quot;" newline="True"/>
+                <declare name="hint" type="String" array="False" size=""/>
+                <input variable="hint"/>
+                <if expression="hint != &quot;yes&quot;">
+                    <then>
+                        <assign variable="correct" expression="false"/>
+                        <if expression="hint == &quot;higher&quot;">
+                            <then>
+                                <assign variable="guessMin" expression="guessNumber + 1"/>
+                            </then>
+                            <else>
+                                <if expression="hint == &quot;lower&quot;">
+                                    <then>
+                                        <assign variable="guessMax" expression="guessNumber - 1"/>
+                                    </then>
+                                    <else>
+                                        <output expression="&quot;I'm very confused.&quot;" newline="True"/>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                        <assign variable="guessNumber" expression="guessMax - ((guessMax - guessMin)/2)"/>
+                    </then>
+                    <else>
+                        <assign variable="correct" expression="true"/>
+                        <output expression="&quot;I got it!&quot;" newline="True"/>
+                    </else>
+                </if>
+            </do>
+        </body>
+    </function>
+</flowgorithm>
